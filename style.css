@@ -1,0 +1,43 @@
+*, *::before, *::after{ 
+    /* uses to style the font of th calculator */
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+    font-style: italic;
+}
+
+body {
+    /* Removes the padding and margi so the back ground fills the screen completely */
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right,#EDDDD4, #197278);
+}
+
+.answer {
+    background-color: white;
+    box-sizing: border-box;
+
+    padding-top: 1cm;
+
+}
+.calc-grid {
+    min-height: 50vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 70px);
+}
+.calc-grid > button {
+    cursor: pointer;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75)
+}
+.calc-grid > button:hover {
+    background-color: rgba(255, 255, 255, .90)
+
+}
+.span-two {
+grid-column: span 2;
+}
