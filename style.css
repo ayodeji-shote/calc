@@ -14,12 +14,29 @@ body {
 }
 
 .answer {
-    background-color: white;
+    background-color: rgb(33, 32, 32);
     box-sizing: border-box;
-
-    padding-top: 1cm;
+    grid-column: 1/-1;
+    display: flex;
+    align-items: flex-end;
+    /* Justify content is used to creat a space between the previous value and the current value */
+    justify-content: space-around; 
+    flex-direction: column;
+    padding: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
 
 }
+.answer .prev {
+color: grey;
+font-size: 2em;
+
+}
+.answer .current {
+    color: white;
+    font-size: 2em;
+    
+    }
 .calc-grid {
     min-height: 50vh;
     display: grid;
