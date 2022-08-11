@@ -17,6 +17,10 @@ class Calculator {
     }
 
     delete() {
+        if(this.currOperand != "")
+        {
+            this.currOperand = ""
+        }
 
     }
     // Method to put number on screen every time a user clicks on a number 
@@ -63,18 +67,47 @@ class Calculator {
     // Does the calculation and returns a single value
     calculate(number) {
         number = number+this.currOperand
-        console.log(number)
         var value = 0
         for (var i = 0; i < number.length; i++) {
             if (number[i]=== "+") {
-                console.log(i)
                 const [num1, num2] = this.split(number, i);
-                value = parseInt(num1) + parseInt(num2)
-                this.clear()
+                value = parseFloat(num1) + parseFloat(num2)
+                value = value.toPrecision(4)
                 this.prevOperand = value
+                return value
+            }
+            if (number[i]=== "*") {
+                const [num1, num2] = this.split(number, i);
+                value = parseFloat(num1) * parseFloat(num2)
+                value = value.toPrecision(4)
+                this.prevOperand = value
+                return value
+            }
+            if (number[i]=== "÷") {
+                const [num1, num2] = this.split(number, i);
+                value = parseFloat(num1)/ parseFloat(num2)
+                value = value.toPrecision(4)
+                this.prevOperand = value
+                return value
+            }
+            if (number[i]=== "-") {
+                const [num1, num2] = this.split(number, i);
+                value = parseFloat(num1)-parseFloat(num2)
+                value = value.toPrecision(4)
+                this.prevOperand = value
+                return value
             }
 
         }
+    }
+    equal(){
+        console.log("equalButtons")
+        this.prevOperand += this.currOperand
+        var equalvalue = this.prevOperand
+        this.clear()
+        var tester = this.calculate(equalvalue)
+        this.equalDisplay(tester)
+        
     }
 
      split(str, index) {
@@ -87,6 +120,12 @@ class Calculator {
         this.currTextElement.innerHTML = this.currOperand;
         this.prevTextElement.innerHTML = this.prevOperand;
     }
+
+    equalDisplay(val) {
+        this.currTextElement.innerHTML = val
+        this.prevTextElement.innerHTML = ""
+    }
+
 }
 
 
@@ -116,5 +155,16 @@ operatorbuttons.forEach(button => {
 })
 
 equalButtons.addEventListener('click', () => {
+    calc.equal()
+});
+
+clearbuttons.addEventListener('click', () => {
+    calc.clear()
+    calc.display()
+});
+
+deleteButtons.addEventListener('click', () => {
+    console.log("reached")
+    calc.delete()
     calc.display()
 });
