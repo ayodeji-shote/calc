@@ -23,8 +23,8 @@ class Calculator {
     }
     // Method to put number on screen every time a user clicks on a number 
     generateNumber(number) {
-        // if (!equalb)
-        // {
+        if (!equalb)
+        {
         if (number === "." && this.currOperand.includes(".")) return
         // Converting it to a string cause javascript tries to ad them as actual numbers
         if (this.currOperand != undefined) {
@@ -35,18 +35,18 @@ class Calculator {
             this.currOperand = number
 
         }
-    // }
-    // else {
-    //     equalb = false
-    //     this.clear();
-    //     this.currOperand= number
-    // }
+    }
+    else {
+        equalb = false
+        this.clear();
+        this.currOperand= number
+    }
     }
 
     selectOperator(operator, ops) {
         equalm = false;
         var prev = false
-        // if (this.currOperand == "") return;
+        if (this.currOperand == "" && this.prevOperand == "") return;
         if (this.prevOperand !== "") {
             this.calculate(this.prevOperand)
             prev = true
